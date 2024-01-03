@@ -1,0 +1,31 @@
+worker:
+  worker_name: "RecordingImport"
+  worker_tasknames: "[recording-import]"
+  worker_count: 1
+  max_requeue_count: 10
+  cutoff_time_interval: 30
+
+vrx_api:
+  user_id: 1
+  group_id: 1
+  request_timeout: 500
+  ca_cert: /usr/app/ssl/ca-cert.pem
+
+recorders:
+  - id: recorder-1
+    custodian_file_id: custodians-1
+    participant_mapping:
+      metadata_field: user_name
+      custodian_field: cloud9_username
+    iv_options:
+      models:
+        - 1
+      diarization_enabled: True
+      treat_all_files_as_single_channel: True
+      sentiment:
+        enabled: True
+        deconvolution_enabled: True
+
+custodians:
+  - id: custodians-1
+    file: /usr/app/custodians/custodians.xml

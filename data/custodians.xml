@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<custodians>
+    <custodian>
+        <first_name>John</first_name>
+        <last_name>Doe</last_name>
+        <email_address>john.doe@example.com</email_address>
+        <languages>
+            <language>
+                <language_id>en</language_id>
+                <language_weight>0.8</language_weight>
+            </language>
+            <language>
+                <language_id>fr</language_id>
+                <language_weight>0.2</language_weight>
+            </language>
+        </languages>
+        <cloud9_username>johndoe</cloud9_username>
+        <redbox_user_id>72</redbox_user_id>
+    </custodian>
+    <custodian>
+        <first_name>Jane</first_name>
+        <last_name>Smith</last_name>
+        <email_address>jane.smith@example.com</email_address>
+        <languages>
+            <language>
+                <language_id>fr</language_id>
+                <language_weight>0.3</language_weight>
+            </language>
+            <language>
+                <language_id>it</language_id>
+                <language_weight>0.7</language_weight>
+            </language>
+            <language>
+                <language_id>en</language_id>
+                <language_weight>0.8</language_weight>
+            </language>
+        </languages>
+        <cloud9_username>janesmith</cloud9_username>
+        <redbox_user_id>73</redbox_user_id>
+    </custodian>
+</custodians>
