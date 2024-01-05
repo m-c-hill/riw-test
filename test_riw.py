@@ -40,7 +40,7 @@ def copy_recordings_to_fileshare():
     Copy the recording data to import to the fileshare location
     """
     copy(
-        source_path="./data/recordings/",
+        source_path="./data/recordings",
         destination_path=os.path.join(config.FILESHARE_DIR, config.RECORDING_DATE),
     )
 

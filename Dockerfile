@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/app
 
-COPY . .
+COPY requirements.txt requirements.txt
 
 RUN apk --no-cache add python3-dev musl-dev gcc curl && \
     python -m venv /usr/app/venv
@@ -21,5 +21,7 @@ RUN mkdir -p /usr/app/shared-libs && \
     rm -rf requirements.txt
 
 ENV PYTHONPATH="${PYTHONPATH}:/usr/app/shared-libs/iv-libs-gearman"
+
+COPY . .
 
 CMD ["python", "./test_riw.py"]
