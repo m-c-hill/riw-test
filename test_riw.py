@@ -14,7 +14,7 @@ def get_gearman_client(servers: list[str]):
     return GearmanClient(servers)
 
 
-def copy(source_path: str, destination_path: str):
+def copy(source_path: str, destination_path: str, directory: bool = False):
     destination_dir = os.path.dirname(destination_path)
     if not os.path.exists(destination_dir):
         os.makedirs(destination_dir)
@@ -22,7 +22,10 @@ def copy(source_path: str, destination_path: str):
     if os.path.exists(destination_path):
         os.remove(destination_path)
 
-    shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
+    if directory:
+        shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
+    else:
+        shutil.copy(source_path, destination_path)
 
 
 def copy_riw_config():
@@ -31,7 +34,7 @@ def copy_riw_config():
     """
     copy(
         source_path="./data/config.yaml",
-        destination_path="/opt/intelligent-voice/data/recording_import_worker/config.yaml",
+        destination_path="/opt/intelligent-voice/data/recording_import_worker/config.yaml"
     )
 
 
@@ -42,6 +45,7 @@ def copy_recordings_to_fileshare():
     copy(
         source_path="./data/recordings",
         destination_path=os.path.join(config.FILESHARE_DIR, config.RECORDING_DATE),
+        directory=True
     )
 
 
