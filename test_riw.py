@@ -22,7 +22,7 @@ def copy(source_path: str, destination_path: str):
     if os.path.exists(destination_path):
         os.remove(destination_path)
 
-    shutil.copy(source_path, destination_path)
+    shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
 
 
 def copy_riw_config():
