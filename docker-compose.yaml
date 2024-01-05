@@ -1,0 +1,13 @@
+version: "3"
+services:
+  python-script:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - ivnet
+
+networks:
+  ivnet:
+    name: ivnet
+    external: true

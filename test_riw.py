@@ -10,10 +10,6 @@ import config
 logger = logging.getLogger(__name__)
 
 
-# TODO: get args - arg to include is boolean "--configure_worker"
-# TODO: if dirs don't exist...?
-
-
 def get_gearman_client(servers: list[str]):
     return GearmanClient(servers)
 
