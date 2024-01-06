@@ -1,4 +1,4 @@
-import logging
+import argparse
 import os
 import shutil
 import subprocess
@@ -6,9 +6,7 @@ import subprocess
 from python3_gmtasks.jsonclass import GearmanClient
 
 import config
-
-logger = logging.getLogger(__name__)
-
+from config import logger
 
 def get_gearman_client(servers: list[str]):
     return GearmanClient(servers)
@@ -44,7 +42,7 @@ def copy_recordings_to_fileshare():
     """
     copy(
         source_path="./data/recordings",
-        destination_path=os.path.join(config.FILESHARE_DIR, config.RECORDING_DATE),
+        destination_path=os.path.join(config.FILESHARE_DIR),
         directory=True
     )
 
@@ -75,7 +73,7 @@ def submit_gearman_task(taskname: str, job_data: dict) -> None:
     """
     Initialise a Gearman client and submit a job to the queue
     """
-    client = get_gearman_client()
+    client = get_gearman_client(servers=config.GEARMAN_SERVERS)
     logger.info(f"Submitting task {taskname} with payload: {job_data}")
     client.submit_job(taskname, job_data, wait_until_complete=False, background=True)
     logger.info(f"Successfully submitted task {taskname}")
@@ -92,8 +90,8 @@ def start_recording_import_task():
         taskname=config.RECORDING_IMPORT_TASK_NAME,
         job_data={
             "ticket": {
-                "recorder_id": config.RECORDER,
-                "recorder_id": config.RECORDING_DATE,
+                "recorder_id": config.RECORDER_ID,
+                "recording_date": config.RECORDING_DATE,
                 "recording_file_id": config.RECORDING_FILE_ID,
             }
         },
@@ -101,10 +99,17 @@ def start_recording_import_task():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Run the recording import worker script.')
+    parser.add_argument('--configure-worker', action='store_true', help='If set, configure the recording import worker')
+    args = parser.parse_args()
+
     logger.info("Starting recording import worker end to end test...")
-    logger.info("Configuring worker and copying test data to host machine")
-    prep_recording_import_worker_for_test()
-    logger.info("Recording import worker configured and restarted successfully")
+    
+    if args.configure_worker:
+        logger.info("Configuring worker and copying test data to host machine")
+        prep_recording_import_worker_for_test()
+        logger.info("Recording import worker configured and restarted successfully")
+
     logger.info("Starting import task...")
     start_recording_import_task()
     logger.info("Recording import worker test run finished")

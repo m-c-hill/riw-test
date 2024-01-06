@@ -16,9 +16,7 @@ RUN mkdir -p /usr/app/shared-libs && \
     pip install --quiet --no-cache-dir /usr/app/shared-libs/iv-libs-gearman/python-dependencies/python3_gmtasks-*.whl && \
     pip install --quiet --no-cache-dir --upgrade -r /usr/app/shared-libs/iv-libs-gearman/requirements.txt && \
     rm -rf /usr/app/shared-libs/iv-libs-gearman/python-dependencies/python3_gmtasks-*.whl && \
-    rm -rf /usr/app/shared-libs/iv-libs-gearman/requirements.txt && \
-    pip install --quiet --no-cache-dir --upgrade -r requirements.txt && \
-    rm -rf requirements.txt
+    rm -rf /usr/app/shared-libs/iv-libs-gearman/requirements.txt
 
 ENV PYTHONPATH="${PYTHONPATH}:/usr/app/shared-libs/iv-libs-gearman"
 
