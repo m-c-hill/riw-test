@@ -107,7 +107,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     logger.info("Starting recording import worker end to end test...")
-    breakpoint() 
+
     if args.configure_worker:
         logger.info("Configuring worker and copying test data to host machine")
         prep_recording_import_worker_for_test()

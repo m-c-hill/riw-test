@@ -15,7 +15,7 @@
         "userID": "janedoe",
         "userName": "janedoe",
         "attributes": ["localParty"],
-	"callRole": "originator"
+        "callRole": "originator"
       },
       {
         "id": 1,
@@ -23,7 +23,7 @@
         "userID": "johnsmith",
         "userName": "johnsmith",
         "attributes": ["localParty"],
-	"callRole": "recipient"
+        "callRole": "recipient"
       },
       {
         "id": 2,
@@ -31,7 +31,7 @@
         "userID": "Herman Melville",
         "userName": "Herman Melville",
         "attributes": ["remoteParty"],
-	"callRole": "recipient"
+        "callRole": "recipient"
       }
     ]
   }
