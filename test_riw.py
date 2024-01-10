@@ -18,7 +18,10 @@ def copy(source_path: str, destination_path: str, directory: bool = False):
         os.makedirs(destination_dir)
 
     if os.path.exists(destination_path):
-        os.remove(destination_path)
+        if os.path.isfile(destination_path):
+            os.remove(destination_path)
+        elif os.path.isdir(destination_path):
+            shutil.rmtree(destination_path)
 
     if directory:
         shutil.copytree(source_path, destination_path, dirs_exist_ok=True)
