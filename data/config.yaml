@@ -20,11 +20,11 @@ recorders:
     iv_options:
       models:
         - 1
-      diarization_enabled: True
+      diarization_enabled: False
       treat_all_files_as_single_channel: True
       sentiment:
-        enabled: True
-        deconvolution_enabled: True
+        enabled: False
+        deconvolution_enabled: False
 
 custodians:
   - id: custodians-1
