@@ -14,21 +14,24 @@
         "channelID": 0,
         "userID": "janedoe",
         "userName": "janedoe",
-        "attributes": ["localParty"]
+        "attributes": ["localParty"],
+	"callRole": "originator"
       },
       {
         "id": 1,
         "channelID": 1,
         "userID": "johnsmith",
         "userName": "johnsmith",
-        "attributes": ["localParty"]
+        "attributes": ["localParty"],
+	"callRole": "recipient"
       },
       {
         "id": 2,
         "channelID": 2,
         "userID": "Herman Melville",
         "userName": "Herman Melville",
-        "attributes": ["remoteParty"]
+        "attributes": ["remoteParty"],
+	"callRole": "recipient"
       }
     ]
   }

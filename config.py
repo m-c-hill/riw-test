@@ -7,7 +7,7 @@ RECORDING_IMPORT_TASK_NAME = "recording-import"
 # Recording data config
 RECORDING_DATE = "2023-10-18"
 RECORDER_ID = "recorder-1"
-FILESHARE_DIR = f"/tmp/recording_import_worker/import/{RECORDER_ID}/{RECORDING_DATE}"
+FILESHARE_DIR = f"/opt/intelligent-voice/data/vrx-servlet/import/{RECORDER_ID}/{RECORDING_DATE}"
 RECORDING_FILE_ID = "recording1"
 
 # Logging
