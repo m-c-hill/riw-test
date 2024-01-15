@@ -56,7 +56,7 @@ def copy_custodian_file():
     """
     copy(
         source_path="./data/custodians.xml",
-        destination_path="/opt/intelligent-voice/data/recording_import_worker/custodians/custodian.xml",
+        destination_path="/opt/intelligent-voice/data/recording_import_worker/custodians/custodians.xml",
     )
 
 
