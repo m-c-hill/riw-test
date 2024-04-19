@@ -8,6 +8,7 @@ from python3_gmtasks.jsonclass import GearmanClient
 import config
 from config import logger
 
+
 def get_gearman_client(servers: list[str]):
     return GearmanClient(servers)
 
@@ -35,7 +36,7 @@ def copy_riw_config():
     """
     copy(
         source_path="./data/config.yaml",
-        destination_path="/opt/intelligent-voice/data/recording_import_worker/config.yaml"
+        destination_path="/opt/intelligent-voice/data/recording_import_worker/config.yaml",
     )
 
 
@@ -46,7 +47,7 @@ def copy_recordings_to_fileshare():
     copy(
         source_path="./data/recordings",
         destination_path=os.path.join(config.FILESHARE_DIR),
-        directory=True
+        directory=True,
     )
 
 
@@ -93,17 +94,21 @@ def start_recording_import_task():
         taskname=config.RECORDING_IMPORT_TASK_NAME,
         job_data={
             "ticket": {
-                "recorder_id": config.RECORDER_ID,
-                "recording_date": config.RECORDING_DATE,
-                "recording_file_id": config.RECORDING_FILE_ID,
+                "recording_id": f"{config.RECORDER_ID}/{config.RECORDING_DATE}/{config.RECORDING_FILE_ID}",
             }
         },
     )
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Run the recording import worker script.')
-    parser.add_argument('--configure-worker', action='store_true', help='If set, configure the recording import worker')
+    parser = argparse.ArgumentParser(
+        description="Run the recording import worker script."
+    )
+    parser.add_argument(
+        "--configure-worker",
+        action="store_true",
+        help="If set, configure the recording import worker",
+    )
     args = parser.parse_args()
 
     logger.info("Starting recording import worker end to end test...")
