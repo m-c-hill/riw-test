@@ -36,5 +36,5 @@ queues:
   import_queue: recording-import
   finished_queue: recording-finished
   failed_queue: recording-failed
-  audit_queue: recording_imported
+  audit_queue: recording-imported
   enable_audit_queue: true
