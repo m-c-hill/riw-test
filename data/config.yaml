@@ -15,6 +15,7 @@ vrx_api:
 recorders:
   - id: recorder-1
     custodian_file_id: custodians-1
+    import_unmatched_recordings: true
     participant_mapping:
       metadata_field: userName
       custodian_field: cloud9_username
@@ -30,3 +31,10 @@ recorders:
 custodians:
   - id: custodians-1
     file: /usr/app/custodians/custodians.xml
+
+queues:
+  import_queue: recording-import
+  finished_queue: recording-finished
+  failed_queue: recording-failed
+  audit_queue: recording_imported
+  enable_audit_queue: true
